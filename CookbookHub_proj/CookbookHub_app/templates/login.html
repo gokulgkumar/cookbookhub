@@ -1,0 +1,74 @@
+{% extends 'nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CookBook Hub</title>
+  </head>
+  <body>
+    {% block content %}
+<br>
+    {% for message in messages %}
+    <div class=" mx-auto alert alert-success w-50 text-center mt-1">
+      <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+
+
+    <div class="container shadow mt-3 py-3 w-25">
+      <h2 class="text-color mb-3 text-center p-5">Login</h2>
+      <form action="" method="POST">
+        {% csrf_token %}
+
+        <div>
+          {% if form.non_field_errors %}
+            {% for err in form.non_field_errors %}
+            <p class="text-danger"><b>{{ err }}</b></p>
+            {% endfor %}
+          {% endif %}
+          <label for="" class="text-color mb-2 mt-1"> Email </label>
+          <br>
+          {{ form.username }} 
+          {% if form.username.errors %} 
+           {% for err in form.username.errors %}
+          <p class="text-danger"><b>{{ err }}</b></p>
+           {% endfor %} 
+          {% endif %}
+          <br>
+        </div>
+        <div>
+          <label for="" class="text-color mt-2 "> Password </label>
+          <br>
+          {{ form.password }}
+          <div class="text-right mt-2">
+          
+        </div> 
+          {% if form.password.errors %} 
+           {% for err in form.password.errors %}
+          <p class="text-danger"><b>{{ err }}</b></p>
+           {% endfor %} 
+          {% endif %}
+          <br><br>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn loginButton text-light">Login</button>
+        </div>
+        
+        
+        <br>
+        <div class="text-center">
+          <p class="text-color">Don't have an account?<a href="{% url 'signupPage' %}"> Signup</a></p>
+        </div>
+        
+        <br>
+        
+
+        
+      </form>
+    </div>
+    <br><br><br><br>
+    {% endblock content %}
+  </body>
+</html>

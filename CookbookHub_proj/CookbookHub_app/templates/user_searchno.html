@@ -1,0 +1,65 @@
+{% extends 'userloggedin_nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CookBook Hub</title>
+  </head>
+  {% block content %} {% load static %}
+  <body>
+    <div class="container-fluid text-center rounded py">
+      <div class="row">
+        <div class="col-sm-2 border-right">
+          <br />
+          <div class="loginButton px-1 py-3 text-center rounded">
+            <span class="text-light loginButton"> <b>Settings</b></span>
+          </div>
+
+          <br />
+          <br />
+           <div class=" p-3 hover rounded-75 text-center mb-4 border">
+            <a href="{% url 'user_dashboard' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Dashboard </b></a
+            >
+          </div>
+          <br>
+
+          <div class=" p-3 border hover rounded text-center mb-4">
+            <a href="{% url 'addrecipe' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Add Recipe </b></a
+            >
+          </div>
+
+          <br />
+          <div class=" p-3 border hover mx-auto rounded text-center mb-4">
+            <a href="{% url 'update_appetizer' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Update Recipe</b>
+            </a>
+          </div>
+          <br />
+          <div class="p-3 border hover mx-auto rounded text-center mb-4">
+            <a
+              href="{% url 'delete_appetizer' %}"
+              class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              > <b>Delete Recipe</b>
+            </a>
+          </div>
+        </div>
+        <div class="col mt-1">
+          <br><br><br>
+       <div>
+   <p>Sorry no Reults found</p>
+       </div>
+       
+
+
+         
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+  {% endblock %}
+</html>

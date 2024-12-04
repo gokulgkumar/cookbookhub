@@ -1,0 +1,87 @@
+{% extends "nav.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <body>
+    {% block content %}
+    <div class="container mt-5">
+      <form class="border p-4 w-50 shadow border rounded mx-auto" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="" class="text-color">First Name</label>
+            {{ form.first_name }}
+            {% if form.first_name.errors %}
+             {% for err in form.first_name.errors %}
+            <p>{{ err }}</p>
+             {% endfor %}
+            {% endif %}
+          </div>
+          <div class="form-group col-md-6">
+            <label for="" class="text-color">Last Name</label>
+            {{ form.last_name }}
+            {% if form.last_name.errors %}
+             {% for err in form.last_name.errors %}
+            <p>{{ err }}</p>
+             {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput" class="text-color">Email</label>
+          {{ form.email }}
+            {% if form.email.errors %}
+             {% for err in form.email.errors %}
+            <p>{{ err }}</p>
+             {% endfor %}
+            {% endif %}
+        </div>
+        <!-- <div class="form-group">
+    <label for="formGroupExampleInput3" class="text-color">Phone Number</label>
+    <input type="number" class="form-control" name="phnum" id="" placeholder="" required>
+  </div> -->
+        <div class="form-group">
+          <label for="formGroupExampleInput2" class="text-color"
+            >Username</label
+          >
+          {{ form.username }}
+            {% if form.username.errors %}
+             {% for err in form.username.errors %}
+            <p>{{ err }}</p>
+             {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2" class="text-color"
+            >Password</label
+          >
+          <p style="color: rgb(255, 83, 64)">{{ form.password1 }}</p>
+           
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput3" class="text-color"
+            >Confirm Password</label>
+          {{ form.password2 }} <br>
+          {% if form.password2.errors %}
+
+          
+            <p class="text-color" style="color: rgb(255, 83, 64)">{{ form.password2.errors }}</p>
+         
+          {% endif %}
+        </div>
+
+       
+
+        <div class="text-center p-1">
+          <button type="submit" class="btn loginButton text-light">
+            Sign Up
+          </button>
+        </div>
+      </form>
+    </div>
+    <br /><br /><br /><br />
+    {% endblock %}
+  </body>
+</html>

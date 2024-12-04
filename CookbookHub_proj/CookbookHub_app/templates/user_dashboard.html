@@ -1,0 +1,89 @@
+{% extends 'userloggedin_nav_nosearch.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CookBook Hub</title>
+  </head>
+  {% block content %} {% load static %}
+  <body>
+    <div class="container-fluid rounded py">
+      <div class="row">
+        <div class="col-sm-2 border-right">
+          <br />
+          <div class="loginButton px-1 py-3 text-center rounded ">
+            <span class="text-light loginButton"> <b>Settings</b></span>
+          </div>
+
+          <br />
+          <br />
+          <div class="shadow p-3 hover rounded-75 text-center mb-4">
+            <a href="{% url 'user_dashboard' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Dashboard </b></a
+            >
+          </div>
+           <br />
+        <div class="border p-3 hover rounded-75 text-center mb-4">
+            <a href="{% url 'userappetizer' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>My Recipes </b></a
+            >
+          </div>
+           <br />
+
+          <div class=" p-3 hover rounded-75 text-center mb-4 border">
+            <a href="{% url 'addrecipe' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Add Recipe </b></a
+            >
+          </div>
+
+          <br />
+          <div class="p-3 border hover mx-auto rounded text-center mb-4">
+            <a href="{% url 'update_appetizer' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Update Recipe</b>
+            </a>
+          </div>
+          <br />
+          <div class="p-3 border hover mx-auto rounded text-center mb-4">
+            <a
+              href="{% url 'delete_appetizer' %}"
+              class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              > <b>Delete Recipe</b>
+            </a>
+          </div>
+        </div>
+        <div class="col mt-1">
+          <div class="text-center mx-auto mt-3 w-50">
+             {% for message in messages %}
+          
+            <div class="alert alert-success">
+             <h4>{{ message }}</h4> 
+            </div>
+          
+          {% endfor %}
+
+          </div>
+         
+        
+          <br><br><br><br>
+
+          <div class="container mt-3 shadow py-5">
+          <h2 class="text-color mx-2">Welcome {{ user.first_name }} {{ user.last_name }}, </h2>
+          <br><br>
+          <p class="text-color">Glad to have you here!! On your dashboard you can add, update and delete your recipes. You can check out others recipes and subscribe to them also.</p>
+          
+
+         
+   
+</div>
+<div>
+   
+</div>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+  {% endblock %}
+</html>

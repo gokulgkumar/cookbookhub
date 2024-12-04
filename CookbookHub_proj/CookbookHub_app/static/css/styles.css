@@ -1,0 +1,113 @@
+.hover {
+  transition: transform 0.3s ease;
+}
+.hover:hover {
+  transform: scale(1.1);
+}
+.carouselbg {
+  background-color: rgb(255, 83, 64);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.navfont {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.section2 {
+  padding-bottom: 110px;
+  padding-top: 150px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+.section2_font {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  color: rgb(255, 83, 64);
+  margin-top: -25px;
+}
+
+.sec3_text {
+  margin-top: 123px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.loginPage {
+  padding-top: 130px;
+}
+
+.loginForm {
+  padding-top: 120px !important;
+}
+
+.loginButton {
+  background-color: rgb(255, 83, 64) !important;
+}
+.img-signup {
+  height: 500px;
+  width: 300px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.text-color {
+  color: rgb(255, 83, 64) !important;
+}
+
+.signuptext {
+  padding-top: 150px;
+}
+
+#texts {
+  color: rgb(255, 83, 64) !important;
+}
+
+.padd {
+  padding: 0 100px 0 180px;
+}
+
+.cardstyle {
+  max-width: 280px;
+  min-width: 280px;
+}
+
+.img-top {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 180px;
+}
+
+a:link {
+  text-decoration: none !important;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.abouttext{
+    font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2.5rem;
+
+}
+
+#footersection{
+  background-color: #f0ebe4;
+}
+
+#footertext{
+  color: rgb(255, 83, 64);
+}
+

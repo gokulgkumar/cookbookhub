@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CookBook Hub</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow carouselbg">
+      <a href="{% url 'homePage' %}">
+        <img
+          src="{% static 'images/Logo.png' %}"
+          alt="CookBook Hub"
+          height="50px"
+          class="mx-2"
+      /></a>
+      <!-- <a class="navbar-brand text-light" href="#">CookBook Hub</a> -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <form class="form-inline padd" method="GET" action="{% url 'search_app' %}">
+            <input
+              class="form-control mr-sm-2 inp"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              size="40" name="searchappet"
+            />
+            <a
+              class="text-color btn btn-light my-2 my-sm-0"
+              type="submit"
+              id="texts"
+            >
+              Search
+            </a>
+          </form>
+        </ul>
+        <ul class="navbar-nav ml-auto mx-5 navfont">
+          <li class="nav-item active">
+            <!-- <a class="nav-link text-light mx-3" href=""
+              ><b>Home</b><span class="sr-only">(current)</span></a
+            > -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light mx-3" href="{% url 'list_userrecipes_appetizers' %}"><b>Recipes</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light mx-3" href="{% url 'logouts' %}"
+              ><b>Logout</b></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </body>
+
+  {% block content %} {% endblock %}
+</html>

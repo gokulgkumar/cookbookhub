@@ -1,0 +1,109 @@
+{% extends 'userloggedin_nav_nosearch.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CookBook Hub</title>
+  </head>
+  {% block content %} {% load static %}
+  <body>
+    <div class="container-fluid text-center rounded py">
+      <div class="row">
+        <div class="col-sm-2 border-right">
+          <br />
+          <div class="loginButton px-1 py-3 text-center rounded">
+            <span class="text-light loginButton"> <b>Settings</b></span>
+          </div>
+
+          <br />
+          <br />
+           <div class=" p-3 hover rounded-75 text-center mb-4 border">
+            <a href="{% url 'user_dashboard' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Dashboard </b></a
+            >
+          </div>
+          <br>
+           <div class="border p-3 hover rounded-75 text-center mb-4">
+            <a href="{% url 'userappetizer' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>My Recipes </b></a
+            >
+          </div>
+           <br />
+
+          <div class=" p-3 border hover rounded text-center mb-4">
+            <a href="{% url 'addrecipe' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Add Recipe </b></a
+            >
+          </div>
+
+          <br />
+          <div class="shadow p-3  hover mx-auto rounded text-center mb-4">
+            <a href="{% url 'update_appetizer' %}" class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              ><b>Update Recipe</b>
+            </a>
+          </div>
+          <br />
+          <div class="p-3 border hover mx-auto rounded text-center mb-4">
+            <a
+              href="{% url 'delete_appetizer' %}"
+              class="btn rounded w-75" style="color: rgb(255, 83, 64)"
+              > <b>Delete Recipe</b>
+            </a>
+          </div>
+        </div>
+         <div class="col mt-1">
+         <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link text-color" href="{% url 'update_appetizer' %}"
+                >Appetizer</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-color" href="{% url 'update_maindish' %}"
+                >Main Dish</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-color active"
+                href="{% url 'update_dessert' %}"
+                style="color: rgb(255, 83, 64)"
+                ><b>Dessert</b></a
+              >
+            </li>
+          </ul>
+
+          <div class="container my-4">
+  {% for i in recipes %}
+    {% if forloop.counter0|divisibleby:3 %}
+      <div class="row card-deck">
+    {% endif %}
+      
+    <div class="col-md-4">
+      <div class="card cardstyle shadow hover ">
+      <a href="{% url 'user_updaterecipe' i.id %}">
+          <img class="card-img-top img-top " style="object-fit: cover;width: 100%;aspect-ratio: 16/9;object-fit: cover;"  src="{{ i.image.url }}" alt="" />
+          <div class="card-body">
+            <h5 class="card-title text-color">{{ i.recipe_name }}</h5>
+                  <p class="card-text text-color">{{ i.user.first_name }} {{ i.user.last_name }} </p>
+          </div>
+          
+        </a>
+      </div>
+    </div>
+    {% if forloop.counter|divisibleby:3 or forloop.last %}
+      </div>
+      <br><br>
+    {% endif %}
+   {% endfor %}
+</div>
+  
+        </div>
+      </div>
+    </div>
+
+ 
+  </body>
+  {% endblock %}
+</html>
