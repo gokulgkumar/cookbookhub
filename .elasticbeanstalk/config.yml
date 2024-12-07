@@ -2,6 +2,8 @@ branch-defaults:
   default:
     environment: CookbookHub-env
     group_suffix: null
+  master:
+    environment: CookbookHub-env
 global:
   application_name: CookbookHubApp
   branch: null

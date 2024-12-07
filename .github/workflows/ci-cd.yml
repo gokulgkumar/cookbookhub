@@ -70,31 +70,31 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.12
-
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install awsebcli
-      - name: Deploy to Elastic Beanstalk
-        run: eb deploy
-
-      # - name: Generate deployment package
-      #   run: |
-      #    zip -r deploy.zip . -x "*.git*"
-         
-      # - name: Deploy to EB
-      #   uses: einaregilsson/beanstalk-deploy@v21
+      # - name: Set up Python
+      #   uses: actions/setup-python@v4
       #   with:
-      #      aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #      aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #      application_name: ${{ secrets.EB_APPLICATION_NAME }}
-      #      environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
-      #      version_label: "ver-${{ github.sha }}"
-      #      region: ${{ secrets.AWS_REGION }}
-      #      deployment_package: deploy.zip
-      #      existing_bucket_name: elasticbeanstalk-us-east-1-471112826218
-      #      wait_for_environment_recovery: 300         
+      #     python-version: 3.12
+
+      # - name: Install Dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install awsebcli
+      # - name: Deploy to Elastic Beanstalk
+      #   run: eb deploy
+
+      - name: Generate deployment package
+        run: |
+         zip -r deploy.zip . -x "*.git*"
+         
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+           application_name: ${{ secrets.EB_APPLICATION_NAME }}
+           environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
+           version_label: "ver-${{ github.sha }}"
+           region: ${{ secrets.AWS_REGION }}
+           deployment_package: deploy.zip
+           existing_bucket_name: elasticbeanstalk-us-east-1-471112826218
+           wait_for_environment_recovery: 300         
