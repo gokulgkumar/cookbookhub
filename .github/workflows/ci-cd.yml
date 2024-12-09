@@ -9,55 +9,55 @@ on:
       - master
 
 jobs:
-  lint:
+  codelint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: code check
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Python setup
         uses: actions/setup-python@v4
         with:
           python-version: 3.12
 
-      - name: Install dependencies
+      - name: Dependencies installation
         run: |
           python -m pip install --upgrade pip
           pip install pylint black bandit safety -r requirements.txt
 
-      - name: Run Pylint
+      - name: pylint start
         run: pylint CookbookHub_proj
 
-      - name: Run Black
+      - name: Black start
         run: black --check .
 
-      - name: Run Bandit
+      - name: Bandit start
         run: bandit -r CookbookHub_proj
 
-      - name: Check dependencies with Safety
+      - name: checking dependencies with Safety
         run: safety check
 
-  test:
+  testingphase:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checking code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Python setup
         uses: actions/setup-python@v4
         with:
           python-version: 3.12
 
-      - name: Install dependencies
+      - name: Dependencies installation
         run: |
           python -m pip install --upgrade pip
           pip install pytest -r requirements.txt
 
-      - name: Run tests
+      - name: running tests using pytest
         run: pytest
 
   deploy:
-    needs: test
+    needs: testingphase
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
