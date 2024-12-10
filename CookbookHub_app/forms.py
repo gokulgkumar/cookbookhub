@@ -1,10 +1,7 @@
 # forms.py
 from django import forms  # type: ignore
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm  # type: ignore
-from django.contrib.auth.models import User  # type: ignore
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm # type: ignore
 from .models import *
-
-# from models import Recipes, Subscriptions, Details
 
 
 class Userform(UserCreationForm):
