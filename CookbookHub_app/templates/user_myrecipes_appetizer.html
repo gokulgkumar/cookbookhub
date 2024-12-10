@@ -84,7 +84,7 @@
     <div class="col-md-4">
       <div class="card cardstyle shadow hover ">
       <a href="{% url 'userview_recipe' i.id %}">
-          <img class="card-img-top img-top " style="object-fit: cover;width: 100%;aspect-ratio: 16/9;object-fit: cover;"  src="{{ i.image.url }}" alt="" />
+          <img class="card-img-top img-top " style="object-fit: cover;width: 100%;aspect-ratio: 16/9;object-fit: cover;"  src="{{ MEDIA_URL }} {{ i.image.url }}" alt="" />
           <div class="card-body">
             <h5 class="card-title text-color">{{ i.recipe_name }}</h5>
                   <p class="card-text text-color">{{ i.user.first_name }} {{ i.user.last_name }} </p>
