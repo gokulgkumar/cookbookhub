@@ -149,12 +149,13 @@ AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
 AWS_SESSION_TOKEN = config("AWS_SESSION_TOKEN")
 AWS_REGION = config("AWS_REGION")
-
+AWS_STORAGE_BUCKET_NAME=cookbookhub-s3
 AUTH_USER_MODEL = "CookbookHub_app.UserAddData"
 
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-MEDIA_URL = f"https://cookbookhub-s3.s3.amazonaws.com/"
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/'
+
 
 # Email setup
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
