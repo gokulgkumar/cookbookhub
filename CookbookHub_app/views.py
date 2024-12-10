@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect  # type: ignore
 from django.contrib import messages  # type: ignore
 from django.contrib.auth.decorators import login_required  # type: ignore
 from django.db.models import Q  # type: ignore
-from django.contrib.auth import get_user_model  # type: ignore
 from .forms import LoginAuthenticate, Userform
 from .models import Recipes
 
@@ -53,7 +52,7 @@ def recipe_view(request, id): # pylint: disable=redefined-builtin
     return render(request, "recipe_view.html", {"recipes": recipes})
 
 
-def signupPage(request): # pylint: disable=no-member, no-else-return, assignment-from-no-return
+def signupPage(request): # pylint: disable=no-member, no-else-return, assignment-from-no-return, unused-variable
     if request.method == "POST":
         form = Userform(request.POST)
 
@@ -125,7 +124,7 @@ def list_userrecipes_appetizers(request): # pylint: disable=no-member
 def search_app(request): # pylint: disable=no-member, no-else-return, redefined-outer-name
     if request.method == "GET":
         search_app = request.GET.get("searchappet", " ")
-        if search_app:
+        if search_app: 
 
             search = Recipes.objects.filter(
                 Q(recipe_name__icontains=search_app)
@@ -136,7 +135,7 @@ def search_app(request): # pylint: disable=no-member, no-else-return, redefined-
         else:
             return render(request, "user_recipes_search.html", {"recipes": search})
     else:
-        messages.success("Sorry invalid request!!")
+        messages.success("Sorry invalid request!!") # pylint: no-value-for-parameter
         return render(request, "user_dashboard.html")
 
 
@@ -219,7 +218,7 @@ def update_maindish(request): # pylint: disable=no-member
     return render(request, "user_updatemaindish.html", {"recipes": recipes})
 
 
-def updaterecipe_maindish(request, id):# pylint: disable=redefined-builtin 
+def updaterecipe_maindish(request, id):# pylint: disable=redefined-builtin, trailing-whitespace
     recipe = Recipes.objects.get(id=id) # pylint: disable=no-member
     print(recipe)
     return render(request, "user_dashboard.html")
@@ -239,7 +238,6 @@ def updaterecipe_dessert(request, id): # pylint: disable=no-member, redefined-bu
 
 
 def user_updaterecipe(request, id): # pylint: disable=no-member
-    user = request.user
     recipe = Recipes.objects.get(id=id)
     return render(request, "user_updaterecipe.html", {"recipe": recipe})
 
@@ -292,7 +290,7 @@ def delete_dessert(request): # pylint: disable=no-member
     return render(request, "user_deletedessert.html", {"recipes": recipe})
 
 
-def delete_recipe(request, id):# # pylint: disable=redefined-builtin,inconsistent-return-statements, no-else-return
+def delete_recipe(request, id):# # pylint: disable=redefined-builtin,inconsistent-return-statements, no-else-return, trailing-whitespace
     user = request.user
     recipe = Recipes.objects.get(id=id, user=user)
     print(recipe)
