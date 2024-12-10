@@ -26,7 +26,7 @@ jobs:
           pip install pylint black bandit safety -r requirements.txt
 
       - name: pylint start
-        run: pylint CookbookHub_proj
+        run: pylint CookbookHub_app
 
       - name: Black start
         run: black --check .
