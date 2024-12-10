@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect  # type: ignore
-from .forms import *
+from .forms import LoginAuthenticate, Userform
 from django.contrib import messages  # type: ignore
 from django.contrib.auth import login, logout, authenticate  # type: ignore
 from .models import Recipes, ManageUser,UserAddData, Subscriptions
