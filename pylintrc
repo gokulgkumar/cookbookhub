@@ -13,3 +13,9 @@ max-locals=15
 
 [DESIGN]
 max-parents=10
+
+[MASTER]
+load-plugins = pylint_django
+
+[django]
+django-settings-module = Cookbook_proj.settings
