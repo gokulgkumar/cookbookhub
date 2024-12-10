@@ -1,7 +1,7 @@
 # forms.py
 from django import forms  # type: ignore
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm # type: ignore
-from .models import *
+from .models import UserAddData
 
 
 class Userform(UserCreationForm): # pylint: disable=too-few-public-methods
