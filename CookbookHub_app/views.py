@@ -171,7 +171,6 @@ def addrecipe(request):
 def adding_recipe(request): 
     if request.method == "POST":
         print(request.user.id)
-        userid = request.user.id
         user = request.user
         recipename = request.POST["recipename"]
         category = request.POST["category"]
