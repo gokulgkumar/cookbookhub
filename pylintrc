@@ -10,3 +10,6 @@ reports=no
 [REFACTORING]
 max-attributes=15
 max-locals=15
+
+[DESIGN]
+max-parents=10
