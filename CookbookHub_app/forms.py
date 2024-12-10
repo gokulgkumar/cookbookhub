@@ -1,10 +1,10 @@
 # forms.py
 from django import forms  # type: ignore
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm # type: ignore
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm  # type: ignore
 from .models import UserAddData
 
 
-class Userform(UserCreationForm): # pylint: disable=too-many-ancestors
+class Userform(UserCreationForm):  # pylint: disable=too-many-ancestors
     first_name = forms.CharField(
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
@@ -30,7 +30,7 @@ class Userform(UserCreationForm): # pylint: disable=too-many-ancestors
         ]
 
 
-class LoginAuthenticate(AuthenticationForm): # pylint: disable=too-few-public-methods
+class LoginAuthenticate(AuthenticationForm):  # pylint: disable=too-few-public-methods
     username = forms.EmailField(
         widget=forms.EmailInput(attrs={"class": "form-control w-100"})
     )
