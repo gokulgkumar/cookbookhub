@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm # typ
 from .models import *
 
 
-class Userform(UserCreationForm):
+class Userform(UserCreationForm): # pylint: disable=too-few-public-methods
     first_name = forms.CharField(
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
@@ -30,7 +30,7 @@ class Userform(UserCreationForm):
         ]
 
 
-class LoginAuthenticate(AuthenticationForm):
+class LoginAuthenticate(AuthenticationForm): # pylint: disable=too-few-public-methods
     username = forms.EmailField(
         widget=forms.EmailInput(attrs={"class": "form-control w-100"})
     )
