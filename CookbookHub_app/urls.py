@@ -82,4 +82,4 @@ urlpatterns = [
     # POST
     # path('signupform',views.signupform,name='signupform'),
     path("adding_recipe", views.adding_recipe, name="adding_recipe"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
