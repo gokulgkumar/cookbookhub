@@ -29,7 +29,7 @@ class UserAddData(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.email
+    return str(self.email) if self.email else "No Email"
 
 
 class Details(models.Model):
