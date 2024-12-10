@@ -48,12 +48,12 @@ def userview_recipe(request, id): # pylint: disable=redefined-builtin
     return render(request, "user_recipe_view.html", {"recipes": recipes})
 
 
-def recipe_view(request, id):
+def recipe_view(request, id): # pylint: disable=redefined-builtin
     recipes = Recipes.objects.filter(id=id)
     return render(request, "recipe_view.html", {"recipes": recipes})
 
 
-def signupPage(request): # pylint: disable=no-member
+def signupPage(request): # pylint: disable=no-member, no-else-return, assignment-from-no-return
     if request.method == "POST":
         form = Userform(request.POST)
 
@@ -122,8 +122,7 @@ def list_userrecipes_appetizers(request): # pylint: disable=no-member
     return render(request, "user_recipes_appetizer.html", {"recipes": recipes})
 
 
-def search_app(request): # pylint: disable=no-member
-    user = get_user_model()
+def search_app(request): # pylint: disable=no-member, no-else-return, redefined-outer-name
     if request.method == "GET":
         search_app = request.GET.get("searchappet", " ")
         if search_app:
@@ -168,7 +167,7 @@ def addrecipe(request):
     return render(request, "user_addrecipe.html", {"user": user})
 
 
-def adding_recipe(request): 
+def adding_recipe(request):
     if request.method == "POST":
         print(request.user.id)
         user = request.user
@@ -220,7 +219,7 @@ def update_maindish(request): # pylint: disable=no-member
     return render(request, "user_updatemaindish.html", {"recipes": recipes})
 
 
-def updaterecipe_maindish(request, id):  # pylint: disable=redefined-builtin 
+def updaterecipe_maindish(request, id):# pylint: disable=redefined-builtin 
     recipe = Recipes.objects.get(id=id) # pylint: disable=no-member
     print(recipe)
     return render(request, "user_dashboard.html")
@@ -233,8 +232,7 @@ def update_dessert(request): # pylint: disable=no-member
     return render(request, "user_updatedessert.html", {"recipes": recipes})
 
 
-def updaterecipe_dessert(request, id): # pylint: disable=no-member
-    user = request.user
+def updaterecipe_dessert(request, id): # pylint: disable=no-member, redefined-builtin 
     recipe = Recipes.objects.get(id=id)
     print(recipe)
     return render(request, "user_dashboard.html")
@@ -246,7 +244,7 @@ def user_updaterecipe(request, id): # pylint: disable=no-member
     return render(request, "user_updaterecipe.html", {"recipe": recipe})
 
 
-def user_update_recipe(request, id):  # pylint: disable=redefined-builtin, inconsistent-return-statements
+def user_update_recipe(request, id):  # pylint: disable=redefined-builtin, inconsistent-return-statements,no-else-return, singleton-comparison
     if request.method == "POST":
         r = Recipes.objects.get(id=id) # pylint: disable=no-member
         r.user = request.user
@@ -294,7 +292,7 @@ def delete_dessert(request): # pylint: disable=no-member
     return render(request, "user_deletedessert.html", {"recipes": recipe})
 
 
-def delete_recipe(request, id):# # pylint: disable=redefined-builtin,inconsistent-return-statements
+def delete_recipe(request, id):# # pylint: disable=redefined-builtin,inconsistent-return-statements, no-else-return
     user = request.user
     recipe = Recipes.objects.get(id=id, user=user)
     print(recipe)
