@@ -21,28 +21,28 @@ def user_dashboard(request):
 
 
 @login_required
-def userappetizer(request):
+def userappetizer(request): # pylint: disable=no-member
     user = request.user
     recipes = Recipes.objects.filter(user=user, category="Appetizers")
     return render(request, "user_myrecipes_appetizer.html", {"recipes": recipes})
 
 
 @login_required
-def usermaindish(request):
+def usermaindish(request): # pylint: disable=no-member
     user = request.user
     recipes = Recipes.objects.filter(user=user, category="Main Dish")
     return render(request, "user_myrecipes_maindish.html", {"recipes": recipes})
 
 
 @login_required
-def userdessert(request):
+def userdessert(request): # pylint: disable=no-member
     user = request.user
     recipes = Recipes.objects.filter(user=user, category="Dessert")
     return render(request, "user_myrecipes_dessert.html", {"recipes": recipes})
 
 
 @login_required
-def userview_recipe(request, id):
+def userview_recipe(request, id): # pylint: disable=no-member
     user = request.user
     recipes = Recipes.objects.filter(id=id, user=user)
     return render(request, "user_recipe_view.html", {"recipes": recipes})
@@ -90,17 +90,17 @@ def loginPage(request):
 #
 
 
-def list_allrecipes_appetizers(request):
+def list_allrecipes_appetizers(request): # pylint: disable=no-member
     recipes = Recipes.objects.filter(category="Appetizers")
     return render(request, "appetizer.html", {"recipes": recipes})
 
 
-def list_allrecipes_maindish(request):
+def list_allrecipes_maindish(request): # pylint: disable=no-member
     recipes = Recipes.objects.filter(category="Main Dish")
     return render(request, "maindish.html", {"recipes": recipes})
 
 
-def list_allrecipes_dessert(request):
+def list_allrecipes_dessert(request): # pylint: disable=no-member
     recipes = Recipes.objects.filter(category="Dessert")
     return render(request, "dessert.html", {"recipes": recipes})
 
@@ -111,18 +111,18 @@ def logouts(request):
 
 
 @login_required
-def user_recipes(request):
+def user_recipes(request): # pylint: disable=no-member
     recipes = Recipes.objects.all()
     return render(request, "user_recipes.html", {"recipes": recipes})
 
 
 @login_required
-def list_userrecipes_appetizers(request):
+def list_userrecipes_appetizers(request): # pylint: disable=no-member
     recipes = Recipes.objects.filter(category="Appetizers")
     return render(request, "user_recipes_appetizer.html", {"recipes": recipes})
 
 
-def search_app(request):
+def search_app(request): # pylint: disable=no-member
     user = get_user_model()
     if request.method == "GET":
         search_app = request.GET.get("searchappet", " ")
@@ -142,13 +142,13 @@ def search_app(request):
 
 
 @login_required
-def list_userrecipes_dessert(request):
+def list_userrecipes_dessert(request): # pylint: disable=no-member
     recipes = Recipes.objects.filter(category="Dessert")
     return render(request, "user_recipes_dessert.html", {"recipes": recipes})
 
 
 @login_required
-def list_userrecipes_maindish(request):
+def list_userrecipes_maindish(request): # pylint: disable=no-member
     recipes = Recipes.objects.filter(category="Main Dish")
     return render(request, "user_recipes_maindish.html", {"recipes": recipes})
 
@@ -168,7 +168,7 @@ def addrecipe(request):
     return render(request, "user_addrecipe.html", {"user": user})
 
 
-def adding_recipe(request):
+def adding_recipe(request): 
     if request.method == "POST":
         print(request.user.id)
         userid = request.user.id
@@ -202,46 +202,46 @@ def updaterecipe(request):
 
 
 @login_required
-def update_appetizer(request):
+def update_appetizer(request): # pylint: disable=no-member
     user = request.user
     recipes = Recipes.objects.filter(category="Appetizers", user=user)
     return render(request, "user_updateappetizer.html", {"recipes": recipes})
 
 
-def updaterecipe_appetizer(request, id):
+def updaterecipe_appetizer(request, id): # pylint: disable=no-member
     recipe = Recipes.objects.get(id=id)
     print(recipe)
     return render(request, "user_dashboard.html")
 
 
 @login_required
-def update_maindish(request):
+def update_maindish(request): # pylint: disable=no-member
     user = request.user
     recipes = Recipes.objects.filter(category="Main Dish", user=user)
     return render(request, "user_updatemaindish.html", {"recipes": recipes})
 
 
-def updaterecipe_maindish(request, id):
+def updaterecipe_maindish(request, id): # pylint: disable=no-member
     recipe = Recipes.objects.get(id=id)
     print(recipe)
     return render(request, "user_dashboard.html")
 
 
 @login_required
-def update_dessert(request):
+def update_dessert(request): # pylint: disable=no-member
     user = request.user
     recipes = Recipes.objects.filter(category="Dessert", user=user)
     return render(request, "user_updatedessert.html", {"recipes": recipes})
 
 
-def updaterecipe_dessert(request, id):
+def updaterecipe_dessert(request, id): # pylint: disable=no-member
     user = request.user
     recipe = Recipes.objects.get(id=id)
     print(recipe)
     return render(request, "user_dashboard.html")
 
 
-def user_updaterecipe(request, id):
+def user_updaterecipe(request, id): # pylint: disable=no-member
     user = request.user
     recipe = Recipes.objects.get(id=id)
     return render(request, "user_updaterecipe.html", {"recipe": recipe})
@@ -249,7 +249,7 @@ def user_updaterecipe(request, id):
 
 def user_update_recipe(request, id): # pylint: disable=inconsistent-return-statements
     if request.method == "POST":
-        r = Recipes.objects.get(id=id)
+        r = Recipes.objects.get(id=id) # pylint: disable=no-member
         r.user = request.user
         r.recipe_name = request.POST["recipename"]
         r.category = request.POST["category"]
@@ -275,21 +275,21 @@ def user_update_recipe(request, id): # pylint: disable=inconsistent-return-state
 
 
 @login_required
-def delete_appetizer(request):
+def delete_appetizer(request): # pylint: disable=no-member
     user = request.user
     recipe = Recipes.objects.filter(category="Appetizers", user=user)
     return render(request, "user_deleteappetizer.html", {"recipes": recipe})
 
 
 @login_required
-def delete_maindish(request):
+def delete_maindish(request): # pylint: disable=no-member
     user = request.user
     recipe = Recipes.objects.filter(category="Main Dish", user=user)
     return render(request, "user_deletemaindish.html", {"recipes": recipe})
 
 
 @login_required
-def delete_dessert(request):
+def delete_dessert(request): # pylint: disable=no-member
     user = request.user
     recipe = Recipes.objects.filter(category="Dessert", user=user)
     return render(request, "user_deletedessert.html", {"recipes": recipe})
