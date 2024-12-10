@@ -247,7 +247,7 @@ def user_updaterecipe(request, id):
     return render(request, "user_updaterecipe.html", {"recipe": recipe})
 
 
-def user_update_recipe(request, id):
+def user_update_recipe(request, id): # pylint: disable=inconsistent-return-statements
     if request.method == "POST":
         r = Recipes.objects.get(id=id)
         r.user = request.user
@@ -295,7 +295,7 @@ def delete_dessert(request):
     return render(request, "user_deletedessert.html", {"recipes": recipe})
 
 
-def delete_recipe(request, id):
+def delete_recipe(request, id):# pylint: disable=inconsistent-return-statements
     user = request.user
     recipe = Recipes.objects.get(id=id, user=user)
     print(recipe)
