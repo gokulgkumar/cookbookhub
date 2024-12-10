@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect  # type: ignore
 from .forms import *
 from django.contrib import messages  # type: ignore
 from django.contrib.auth import login, logout, authenticate  # type: ignore
-from .models import *
+from .models import Recipes, ManageUser,UserAddData, Subscriptions
 from django.contrib.auth import get_user_model  # type: ignore
 from django.contrib.auth.decorators import login_required  # type: ignore
 from django.db.models import Q  # type: ignore
