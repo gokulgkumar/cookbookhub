@@ -42,9 +42,9 @@ def userdessert(request): # pylint: disable=no-member
 
 
 @login_required
-def userview_recipe(request, id): # pylint: disable=no-member
+def userview_recipe(request, id): # pylint: disable=redefined-builtin
     user = request.user
-    recipes = Recipes.objects.filter(id=id, user=user)
+    recipes = Recipes.objects.filter(id=id, user=user)  # pylint: disable=no-member
     return render(request, "user_recipe_view.html", {"recipes": recipes})
 
 
@@ -53,7 +53,7 @@ def recipe_view(request, id):
     return render(request, "recipe_view.html", {"recipes": recipes})
 
 
-def signupPage(request):
+def signupPage(request): # pylint: disable=no-member
     if request.method == "POST":
         form = Userform(request.POST)
 
@@ -208,8 +208,8 @@ def update_appetizer(request): # pylint: disable=no-member
     return render(request, "user_updateappetizer.html", {"recipes": recipes})
 
 
-def updaterecipe_appetizer(request, id): # pylint: disable=no-member
-    recipe = Recipes.objects.get(id=id)
+def updaterecipe_appetizer(request, id): # pylint: disable=redefined-builtin
+    recipe = Recipes.objects.get(id=id) # pylint: disable=no-member
     print(recipe)
     return render(request, "user_dashboard.html")
 
@@ -221,8 +221,8 @@ def update_maindish(request): # pylint: disable=no-member
     return render(request, "user_updatemaindish.html", {"recipes": recipes})
 
 
-def updaterecipe_maindish(request, id): # pylint: disable=no-member
-    recipe = Recipes.objects.get(id=id)
+def updaterecipe_maindish(request, id):  # pylint: disable=redefined-builtin 
+    recipe = Recipes.objects.get(id=id) # pylint: disable=no-member
     print(recipe)
     return render(request, "user_dashboard.html")
 
@@ -247,7 +247,7 @@ def user_updaterecipe(request, id): # pylint: disable=no-member
     return render(request, "user_updaterecipe.html", {"recipe": recipe})
 
 
-def user_update_recipe(request, id): # pylint: disable=inconsistent-return-statements
+def user_update_recipe(request, id):  # pylint: disable=redefined-builtin, inconsistent-return-statements
     if request.method == "POST":
         r = Recipes.objects.get(id=id) # pylint: disable=no-member
         r.user = request.user
@@ -263,13 +263,13 @@ def user_update_recipe(request, id): # pylint: disable=inconsistent-return-state
             r.image = oldImage
         else:
             r.image = newImage
-        if r.category == "Appetizers":
+        if r.category == "Appetizers": # pylint: disable=inconsistent-return-statements
             r.save()
             return redirect("update_appetizer")
-        elif r.category == "Main Dish":
+        elif r.category == "Main Dish": # pylint: disable=inconsistent-return-statements
             r.save()
             return redirect("update_maindish")
-        else:
+        else: # pylint: disable=inconsistent-return-statements
             r.save()
             return redirect("update_dessert")
 
@@ -295,7 +295,7 @@ def delete_dessert(request): # pylint: disable=no-member
     return render(request, "user_deletedessert.html", {"recipes": recipe})
 
 
-def delete_recipe(request, id):# pylint: disable=inconsistent-return-statements
+def delete_recipe(request, id):# # pylint: disable=redefined-builtin,inconsistent-return-statements
     user = request.user
     recipe = Recipes.objects.get(id=id, user=user)
     print(recipe)
