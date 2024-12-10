@@ -153,9 +153,6 @@ AWS_REGION = config("AWS_REGION")
 AUTH_USER_MODEL = "CookbookHub_app.UserAddData"
 
 
-
-
-
 # Email setup
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
