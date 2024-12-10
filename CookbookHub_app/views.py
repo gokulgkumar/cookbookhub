@@ -121,7 +121,7 @@ def list_userrecipes_appetizers(request): # pylint: disable=no-member
     return render(request, "user_recipes_appetizer.html", {"recipes": recipes})
 
 
-def search_app(request): # pylint: disable=no-member, no-else-return, redefined-outer-name
+def search_app(request): # pylint: disable=no-member, no-else-return, redefined-outer-name, no-value-for-parameter
     if request.method == "GET":
         search_app = request.GET.get("searchappet", " ")
         if search_app: 
@@ -135,7 +135,7 @@ def search_app(request): # pylint: disable=no-member, no-else-return, redefined-
         else:
             return render(request, "user_recipes_search.html", {"recipes": search})
     else:
-        messages.success("Sorry invalid request!!") # pylint: no-value-for-parameter
+        messages.success("Sorry invalid request!!") 
         return render(request, "user_dashboard.html")
 
 
