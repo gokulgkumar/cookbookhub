@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm # typ
 from .models import UserAddData
 
 
-class Userform(UserCreationForm): # pylint: disable=too-few-public-methods
+class Userform(UserCreationForm): # pylint: disable=too-many-ancestors
     first_name = forms.CharField(
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
